@@ -1,0 +1,73 @@
+﻿@page "{id:int?}"
+@model TelefoaneOnline.Pages.Categorii.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Categorie[0].CategorieProdus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.CategorieData.Categorii)
+ {
+ string selectedRow = "";
+ if (item.ID == Model.CategorieID)
+ {
+ selectedRow = "table-success";
+ }
+ <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.CategorieProdus)
+            </td>
+            <td>
+                <a asp-page="./Index" asp-route-id="@item.ID">Select</a> |
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@if (Model.CategorieData.Telefoane != null)
+{
+    <h3>Books Edited by Selected Publisher</h3>
+    <table class="table">
+
+        @foreach (var item in Model.CategorieData.Categorii)
+        {
+            string selectedRow = "";
+            if (item.ID == Model.CategorieID)
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
+
+                <td>
+                    @{
+                        foreach (var b in item.Telefoane)
+                        {
+
+                            @b.Denumire @: @b.Memorie
+
+                            <br />
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}
+

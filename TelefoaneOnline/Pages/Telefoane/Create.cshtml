@@ -1,0 +1,63 @@
+﻿@page
+@model TelefoaneOnline.Pages.Telefoane.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Telefon</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Telefon.Denumire" class="control-label"></label>
+                <input asp-for="Telefon.Denumire" class="form-control" />
+                <span asp-validation-for="Telefon.Denumire" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefon.Pret" class="control-label"></label>
+                <input asp-for="Telefon.Pret" class="form-control" />
+                <span asp-validation-for="Telefon.Pret" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefon.Model" class="control-label"></label>
+                <input asp-for="Telefon.Model" class="form-control" />
+                <span asp-validation-for="Telefon.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefon.DiagDisplay" class="control-label"></label>
+                <input asp-for="Telefon.DiagDisplay" class="form-control" />
+                <span asp-validation-for="Telefon.DiagDisplay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefon.CategorieID" class="control-label">Categorie Produs</label>
+                <select asp-for="Telefon.CategorieID" class="form-control" asp-items="ViewBag.CategorieID">
+                </select>
+                <span asp-validation-for="Telefon.CategorieID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefon.MemorieID" class="control-label"></label>
+                <select asp-for="Telefon.MemorieID" class="form-control" asp-items="ViewBag.MemorieID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefon.CuloareID" class="control-label"></label>
+                <select asp-for="Telefon.CuloareID" class="form-control" asp-items="ViewBag.CuloareID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
